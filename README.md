@@ -1,5 +1,7 @@
 # NullAway issue with `Optional.or(...)`
 
+https://github.com/uber/NullAway/issues/1611
+
 ```java
 @NullMarked
 public class Main {
