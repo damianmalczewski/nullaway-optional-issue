@@ -1,8 +1,10 @@
 import net.ltgt.gradle.errorprone.errorprone
+import net.ltgt.gradle.nullaway.nullaway
 
 plugins {
     id("java")
     id("net.ltgt.errorprone") version "5.1.0"
+    id("net.ltgt.nullaway") version "3.1.0"
 }
 
 group = "org.example"
@@ -28,9 +30,11 @@ dependencies {
 tasks.withType<JavaCompile>().configureEach {
     options.errorprone {
         disableAllChecks = true
-        error("NullAway")
-        option("NullAway:OnlyNullMarked", "true")
-        option("NullAway:JSpecifyMode", "true")
+        nullaway {
+            jspecifyMode = true
+            onlyNullMarked = true
+            error()
+        }
     }
 }
 
